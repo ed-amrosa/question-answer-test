@@ -6,14 +6,14 @@ import {
 import './App.css';
 import QuestionListPage from './app/pages/QuestionListPage';
 import QuestionDetailsPage from './app/pages/QuestionDetailsPage';
-import HomePage from './app/pages/HomePage';
+
 
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage/>,
+      element: <QuestionListPage/>,
     },
     {
       path: "/questions",
