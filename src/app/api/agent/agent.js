@@ -4,18 +4,15 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 const responseBody = (response) => response.data;
 
-const sleep = (delay) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, delay);
-    });
-} 
-
 const requests = {
-    get: (url) => axios.get(url).then(responseBody),
+    get: (url, params) => axios.get(url, params).then(responseBody),
+    put: (url) => axios.put(url).then(responseBody)
 }
 
 const Questions = {
-    list: () => axios.get('/questions').then(responseBody),
+    get: (id) => requests.get('/questions/' + id),
+    list: (params) => requests.get('/questions', params),
+    update: (id) => requests.put(`/questions/${id}`),
 }
 
 const ServerHealth = {
