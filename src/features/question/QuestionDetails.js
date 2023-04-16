@@ -7,11 +7,14 @@ const QuestionDetails = ({ question }) => {
   const [error, setError] = useState(); 
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  if(!question) return null;
+
   const onModalVisibleChange = () => {
     setIsOpenModal(!isOpenModal);
   }
 
   const onVoteSubmit = () => {
+    console.log("YO")
     setLoading(true);
     agent.Questions.update(question.id).then(res => {
       setLoading(false);
@@ -19,7 +22,7 @@ const QuestionDetails = ({ question }) => {
     .catch(error => setError('An error has occurred'))
   }
 
-  if(!question) return null;
+  
   const handleChoiceChange = (e) => {
     setChoice(e.target.value);
   };
