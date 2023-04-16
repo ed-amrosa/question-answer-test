@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import agent from "../../app/api/agent/agent";
+import {ModalContext} from "../../app/store/ModalStore";
 
 const QuestionDetails = ({ question }) => {
   const [selectedChoice, setChoice] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(); 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [state, setState] = useContext(ModalContext);
 
   if(!question) return null;
 
-  const onModalVisibleChange = () => {
-    setIsOpenModal(!isOpenModal);
+  const onModalVisibleChange = (contentUrl) => {
+    setState({isOpen: true, contentUrl: contentUrl});
   }
 
   const onVoteSubmit = () => {
-    console.log("YO")
     setLoading(true);
-    agent.Questions.update(question.id).then(res => {
+    let updatedQuestion = question;
+    updatedQuestion.choices.forEach(choice => {
+      if(choice.choice === selectedChoice) {
+        choice.votes++;
+      }
+    });
+
+    agent.Questions.update(question.id, updatedQuestion).then(res => {
       setLoading(false);
     })
     .catch(error => setError('An error has occurred'))
@@ -28,6 +35,7 @@ const QuestionDetails = ({ question }) => {
   };
 
   const date = question.published_at ? new Date(question.published_at)?.toString() : '';
+  const contentUrl = window.location.href;
 
   return (
     <div className="details-panel">
@@ -53,7 +61,7 @@ const QuestionDetails = ({ question }) => {
             })}
           </form>
           <button disabled={selectedChoice === ''} onClick={onVoteSubmit}>Submit</button>
-          <button onClick={onModalVisibleChange}>Share</button>
+          <button onClick={() => onModalVisibleChange(contentUrl)}>Share</button>
         </div>
       </div>
       <div className="details-panel-footer">
