@@ -56,7 +56,6 @@ code {
 
 /*Panel*/
 .panel {
-  position: relative;
   background: #fff;
   box-shadow: 0 1px 2px 0 #2c6baa;
   margin: 0 0;
@@ -74,7 +73,6 @@ code {
 }
 
 .list-item-thumb {
-  position: relative;
   display: inline-block;
   background-color: transparent;
   vertical-align: top;
@@ -366,7 +364,7 @@ input {
 
 .cancel-button {
   background-color: #ccc;
-  color: white;
+  color: rgb(246, 188, 188);
   border: none;
   padding: 10px 20px;
   margin-left: 10px;
@@ -375,7 +373,7 @@ input {
 }
 
 .submit-button {
-  background-color: green;
+  background-color: rgb(183, 183, 245);
   color: white;
   border: none;
   padding: 10px 20px;

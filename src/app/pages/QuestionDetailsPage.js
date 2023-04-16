@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import QuestionItemDetails from "../../features/question/QuestionItemDetails";
 import QuestionDetails from "../../features/question/QuestionDetails";
 
 import { useParams, useNavigate } from "react-router-dom";
