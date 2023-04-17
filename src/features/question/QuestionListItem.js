@@ -32,7 +32,11 @@ function QuestionListItem(props) {
                     </a>
                     <div className="list-item-date">Published at: {date}</div>
                 </div>
-                <button onClick={() => onModalVisibleChange(contentUrl)}>Share</button>
+                <button 
+                    onClick={() => onModalVisibleChange(contentUrl)}
+                >
+                    Share
+                </button>
             </div>
         </Panel>
     );

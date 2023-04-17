@@ -20,6 +20,7 @@ function QuestionDetailsPage() {
             setLoading(false);
             navigate('/not-found')});
     },[])
+    
     return (
         loading ? <Loading/> : 
             <>

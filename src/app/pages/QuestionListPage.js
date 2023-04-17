@@ -41,8 +41,8 @@ function QuestionListPage() {
     return (<>
         <div className="details-panel">
             <div className="details-panel-header m-8 p-8">
-                <h2>Filter</h2>
                 <div className="filter-input">
+                    <div className="filter-label">Filter</div> 
                     <input 
                         onChange={onFilterChange}
                         value={searchParams.get('filter')} 
@@ -50,7 +50,7 @@ function QuestionListPage() {
                         type="text" 
                         style={{width: "50%"}}
                         autoFocus={searchParams.get('filter') !== null}
-                    />        
+                        />    
                 </div>
             </div>
             <div className="divider"/>
