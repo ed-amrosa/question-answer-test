@@ -1,4 +1,4 @@
-function Loader() {
+const Loader = () => {
     return <div className="loader"/>;    
 }
 

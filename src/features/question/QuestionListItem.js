@@ -3,8 +3,7 @@ import Panel from "../../app/common/Panel";
 import { useNavigate } from "react-router-dom";
 import { ModalProvider, ModalContext } from "../../app/store/ModalStore";
 
-function QuestionListItem(props) {
-    const {question} = props;
+function QuestionListItem({question}) {
     const navigate = useNavigate();
 
     const [state, setState] = useContext(ModalContext);
@@ -17,7 +16,7 @@ function QuestionListItem(props) {
     const contentUrl = window.location.href + '/' + question.id.toString();
 
     return (
-        <Panel key={"question-" + question.id} className="panel m-8">
+        <Panel key={"question-" + question.id} className="m-8">
             <div className="list-item">
                 <img 
                     className="list-item-thumb" 
@@ -30,9 +29,13 @@ function QuestionListItem(props) {
                     >
                         {question.question}
                     </a>
-                    <div className="list-item-date">Published at: {date}</div>
+                    <div className="list-item-date">Published at: {date ? date.split('+')[0] : 'N/A'}</div>
                 </div>
-                <button onClick={() => onModalVisibleChange(contentUrl)}>Share</button>
+                <button 
+                    onClick={() => onModalVisibleChange(contentUrl)}
+                >
+                    Share
+                </button>
             </div>
         </Panel>
     );

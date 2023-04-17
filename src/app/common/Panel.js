@@ -1,7 +1,5 @@
-function Panel(props) {
-    const { className, children } = props;
-    
-    return <div className={className}>{children}</div>;
+const Panel = ({className, children}) => {
+        return <div className={'panel ' + className}>{children}</div>;
 }
 
 export default Panel;

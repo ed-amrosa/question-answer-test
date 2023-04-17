@@ -1,7 +1,6 @@
 import Loader from "./Loader"
 
-function Loading({content}) {
-    console.log(content);
+const Loading = ({content}) => {
     return (
         <div className="container">
             <div className="loader-container">

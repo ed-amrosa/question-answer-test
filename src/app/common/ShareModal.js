@@ -4,11 +4,15 @@ import { ModalContext } from "../store/ModalStore";
 import Loader from "../layout/Loader";
 
 const ShareModal = (contentUrl) => {
+    const [state, setState] = useContext(ModalContext);
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
-    const [state, setState] = useContext(ModalContext);
+    const [error, setError] = useState(false);
     const [message, setMessage] = useState(null);
  
+    const validateEmail = () => {
+        return /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/.test(email)
+    }
     const handleClose = () => {
       setState({isOpen: false});
     }
@@ -25,9 +29,10 @@ const ShareModal = (contentUrl) => {
       })
       .catch(error => setMessage('Failed to share content'));
     }
-  
+
+    const messageClassName = error ? 'red' : message ? 'green' : '';
+    const disabled = validateEmail();
     return (
-      <>
         <div className="modal-overlay">
           <div className="modal">
             {loading ? <div className="loader-container-xs"><Loader/></div> :
@@ -37,18 +42,17 @@ const ShareModal = (contentUrl) => {
                 </div>
                 <div className="modal-body">
                   <label>Email</label>
-                  <input type="text" onChange={handleEmailChange}/>
+                  <input type="email" onChange={handleEmailChange}/>
                 </div>
-                {message ? <div>{message}</div> : null}
+                {message ? <div className={messageClassName}>{message}</div> : null}
                 <div className="modal-footer">
                   <button className="cancel-button" onClick={handleClose}>Cancel</button>
-                  <button className="submit-button" onClick={handleShareSubmit}>Share</button>
+                  <button disabled={disabled} className="submit-button" onClick={handleShareSubmit}>Share</button>
                 </div>
               </>
             }
           </div>
         </div>
-      </>
     );
   };
   

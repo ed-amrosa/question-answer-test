@@ -18,7 +18,6 @@ const useInfiniteScroller = (loadItems) => {
 
   useEffect(() => {
     if (!fetching) return;
-    console.log('here');
     loadItems();
 
   }, [fetching]);

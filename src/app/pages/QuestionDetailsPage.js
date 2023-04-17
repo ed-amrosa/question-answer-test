@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import QuestionDetails from "../../features/question/QuestionDetails";
-
+import { FaArrowCircleLeft } from 'react-icons/fa';
 import { useParams, useNavigate } from "react-router-dom";
 import Loading from "../layout/Loading";
 import agent from "../api/agent/agent";
+import FixedButton from "../common/FixedButton";
 
 function QuestionDetailsPage() {
     const {questionId} = useParams();
@@ -20,14 +21,22 @@ function QuestionDetailsPage() {
             setLoading(false);
             navigate('/not-found')});
     },[])
+
+    
     return (
         loading ? <Loading/> : 
-            <>
+            <div className="mock-container">
                 <QuestionDetails 
                     question={question}
                 />
-                <button onClick={() => navigate('/questions')}>Back</button>
-            </>
+                <FixedButton 
+                    isVisible 
+                    callback={() => navigate("/questions")} 
+                    iconComponent={<FaArrowCircleLeft/>}
+                    label="Back"
+                />
+            </div>
+            
     );
 }
 

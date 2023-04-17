@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import agent from "../api/agent/agent";
 import Loader from "../layout/Loader";
 import QuestionListItem from "../../features/question/QuestionListItem";
 import useInfiniteScroller from "../hooks/useInfiniteScroller";
+import ScrollTopButton from "../common/ScrollTopButton";
 
 function QuestionListPage() {
+    const navigate = useNavigate();
     const [questionList, setQuestionList] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [filter, setFilter] = useState();
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useInfiniteScroller(loadMoreData);
     const [offset, setOffset] = useState(1);
@@ -15,6 +18,12 @@ function QuestionListPage() {
     const onFilterChange = (e) => {
         setQuestionList([]);
         setSearchParams({filter: e.target.value});
+        setFilter(e.target.value);
+    }
+
+    const clearSearch = () => {
+        setSearchParams({});
+        setFilter('');
     }
 
     const loadData = () => {
@@ -35,22 +44,25 @@ function QuestionListPage() {
     };
 
     useEffect(()=>{
+        setFilter(searchParams.get('filter'));
         loadData();
     }, [searchParams])
 
     return (<>
+        <ScrollTopButton />
         <div className="details-panel">
-            <div className="details-panel-header m-8 p-8">
-                <h2>Filter</h2>
+            <div className="details-panel-header m-8">
                 <div className="filter-input">
+                    <div className="filter-label">Filter</div> 
                     <input 
                         onChange={onFilterChange}
-                        value={searchParams.get('filter')} 
+                        value={filter} 
                         className="textbox" 
                         type="text" 
                         style={{width: "50%"}}
                         autoFocus={searchParams.get('filter') !== null}
-                    />        
+                        />
+                        <button onClick={clearSearch}>Clear Search</button>    
                 </div>
             </div>
             <div className="divider"/>
