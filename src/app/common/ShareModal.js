@@ -33,7 +33,6 @@ const ShareModal = (contentUrl) => {
     const messageClassName = error ? 'red' : message ? 'green' : '';
     const disabled = validateEmail();
     return (
-      <>
         <div className="modal-overlay">
           <div className="modal">
             {loading ? <div className="loader-container-xs"><Loader/></div> :
@@ -54,7 +53,6 @@ const ShareModal = (contentUrl) => {
             }
           </div>
         </div>
-      </>
     );
   };
   

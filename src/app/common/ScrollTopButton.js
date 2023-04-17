@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
-import './ScrollButton.css';
+import FixedButton from './FixedButton';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,10 +27,13 @@ const ScrollToTopButton = () => {
   };
 
   return (
-    <div className={`scrollButton ${isVisible ? 'show' : ''}`} onClick={scrollToTop}>
-      <FaArrowCircleUp />
-    </div>
+    <FixedButton 
+      isVisible={isVisible} 
+      label="Back to Top" 
+      callback={scrollToTop} 
+      iconComponent={<FaArrowCircleUp/>}
+    />
   );
 };
 
-export default ScrollButton;
+export default ScrollToTopButton;

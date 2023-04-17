@@ -127,6 +127,13 @@ code {
   box-shadow: 0 1px 2px 0 #2c6baa;
 }
 
+.mock-container button {
+  background-color: #2c6baa;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
 .list-item-content {
   display: inline-block;
   width: auto;
@@ -156,6 +163,17 @@ code {
 .details-panel-body {
   flex: 2;
   margin-top: 20px;
+}
+
+
+.details-panel-body button {
+    position:relative;
+    float: right;
+    color: white;
+    background-color: #2c6baa;
+    border: 1px solid #2c6baa;
+    border-radius: 4px;
+    margin: 0 4px;  
 }
 
 .details-panel-body h2 {
@@ -194,6 +212,12 @@ code {
 }
 
 /*divider*/
+.divider-xs {
+  height: 1px;
+  background-color: #acd2f7;
+  margin: 0 4%;
+}
+
 .divider {
   height: 1px;
   background-color: #2c6baa;
@@ -207,11 +231,23 @@ code {
   }
 }
 
-.filter-input{
+/* Filter */
+
+.filter-input {
   padding: 8px;
   width: 100%;
   justify-content: center;
   display: flex !important;
+}
+
+.filter-input button {
+  position:relative;
+  float: right;
+  color: white;
+  background-color: #2c6baa;
+  border: 1px solid #2c6baa;
+  border-radius: 4px;
+  margin: 0 4px;  
 }
 
 .filter-label {
@@ -229,11 +265,7 @@ code {
   padding: 8px;
 }
 
-.divider-xs {
-  height: 1px;
-  background-color: #acd2f7;
-  margin: 0 4%;
-}
+
 
 
 /*
@@ -298,7 +330,7 @@ input {
   color: rgb(0, 0, 0);
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   margin: 0px 5px;
 }
@@ -308,17 +340,17 @@ input {
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   margin: 0px 5px;
 }
 
 .red {
-  color: red !important
+  background-color: red !important
 }
 
 .green {
-  color: green !important
+  background-color: rgb(102, 189, 102) !important
 }
 
 .blue {
@@ -352,16 +384,12 @@ button {
   margin-bottom: 10px;
 }
 
-input[type='radio'] {
-  margin-right: 10px;
-}
-
 label {
   font-size: 16px;
 }
 
 .vote-button {
-  background-color: #007bff;
+  background-color: #00ff51;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -421,13 +449,18 @@ label {
   display: flex;
 }
 
-.voting-poll-item input {
-  width: 5%;
-  height: 18px;
-}
-
-
 .voting-poll-item label {
   width: 95%;
   font-weight: bold;
+}
+
+.fixed-button {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  color: #2c6baa;
+}
+
+.hide {
+  display: none;
 }
