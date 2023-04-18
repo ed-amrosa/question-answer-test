@@ -1,11 +1,10 @@
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import Panel from "../../app/common/Panel";
 import { useNavigate } from "react-router-dom";
-import { ModalProvider, ModalContext } from "../../app/store/ModalStore";
+import { ModalContext } from "../../app/stores/ModalStore";
 
 function QuestionListItem({question}) {
     const navigate = useNavigate();
-
     const [state, setState] = useContext(ModalContext);
 
     const onModalVisibleChange = (contentUrl) => {
