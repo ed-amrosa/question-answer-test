@@ -1,9 +1,13 @@
-import { makeAutoObservable, runInAction, configure, reaction } from "mobx";
-import agent from "../api/agent/agent";
+import { makeAutoObservable, runInAction, configure } from "mobx";
+import agent from "../../app/api/agent/agent";
 
 configure({
     useProxies: "never"
 });
+
+//Used MOBX to control question store state, as it is a simple and horizontally scalable tool suitable for this problem
+//I'm mostly confortable with redux, but would be a bad decision to use it in this case, larger code necessity / overhead
+//Redux scales better vertically, mainly for bulkier applications with larger data structures
 
 class QuestionStore {
     questionList = [];

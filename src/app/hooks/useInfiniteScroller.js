@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+
+//Receives a callback that is called to retrieve more items when handle scroll condition is satisfied
 const useInfiniteScroller = (loadItems) => {
   const [fetching, setFetching] = useState(false);
 

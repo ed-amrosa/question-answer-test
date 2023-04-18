@@ -1,17 +1,14 @@
 import React from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import './App.css';
-import QuestionListPage from './app/pages/QuestionListPage';
-import QuestionDetailsPage from './app/pages/QuestionDetailsPage';
-import HomePage from './app/pages/HomePage';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import QuestionListPage from './features/question/QuestionListPage';
+import QuestionDetailsPage from './features/question/QuestionDetailsPage';
+import HomePage from './features/home/HomePage';
 import useNetworkStatus from './app/hooks/useNetworkStatus';
 import Loading from "./app/layout/Loading";
 
 
 function App() {
+  //Detects if user is connected to the internet
   const isOnline = useNetworkStatus();
   const router = createBrowserRouter([
     {

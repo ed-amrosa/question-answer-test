@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import ShareModal from "../common/ShareModal";
+import {createContext, useState } from "react";
+import ShareModal from "../../app/common/ShareModal";
 
-const ModalContext = React.createContext([{}, () => {}]);
+//used context to control ModalStore 
+const ModalContext = createContext([{}, () => {}]);
 
 const ModalProvider = (props) => {
   const [state, setState] = useState({ isOpen: false, contentUrl: null });

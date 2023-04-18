@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
 import FixedButton from './FixedButton';
 
+//listens to scroll event when a certain offset is reached, shows a button that scrolls to top of the window
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 

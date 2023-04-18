@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {ModalContext} from "../../app/stores/ModalStore";
+import {ModalContext} from "../../features/stores/ModalStore";
 import VotingPoll from '../../app/common/VotingPoll';
 import Loader from '../../app/layout/Loader';
 

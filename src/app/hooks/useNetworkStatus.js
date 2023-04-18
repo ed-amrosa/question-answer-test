@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+//detects if user is connected to the internet
 const useNetworkStatus = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
