@@ -28,7 +28,7 @@ function HomePage() {
 
     return <>{ loading ? <Loading/> : 
                 <FixedButton 
-                    onClick={checkServerHealth}
+                    isVisible
                     iconComponent={<FaHistory/>}
                     callback={checkServerHealth}
                     label={"Retry"}
