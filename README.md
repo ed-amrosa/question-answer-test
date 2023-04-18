@@ -1,5 +1,5 @@
 # question-answer-test
-`
+
 Developed using the latest stable versions of react and react-router-dom libs.
 Functionality has been prioritized over design.
 
@@ -12,7 +12,7 @@ was also an option, but given the simplicity of the app
 MOBX was selected as it is easier to scale horizontally and needs less code.
 
 Redux would only be an appropriate solution if there was an high complexity in both app and data structures as it scales better vertically.
-`
+
 ---
 # Instructions:
 ## Installation:
