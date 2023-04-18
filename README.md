@@ -5,7 +5,7 @@
 ```
 npm install
 ```
-##Running project:
+## Running project:
 ```
 npm run start
 ```
