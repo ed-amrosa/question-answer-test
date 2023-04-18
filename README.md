@@ -24,5 +24,6 @@ npm install
 npm run start
 ```
 ## Running with another API besides the mock API provided
----
+``` 
 Change the .env.local REACT_APP_API_URL config to the desired API URL.
+```
