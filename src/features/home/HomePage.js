@@ -12,7 +12,6 @@ function HomePage() {
     const checkServerHealth = () => {
         setLoading(true); 
         agent.ServerHealth.get().then(res => {
-            console.log(res)
             setLoading(false);
             if(res.status === "OK") {
                 navigate('/questions');
@@ -30,7 +29,7 @@ function HomePage() {
     return <>{ loading ? <Loading/> : 
                 <FixedButton 
                     onClick={checkServerHealth}
-                    iconComponent={FaHistory}
+                    iconComponent={<FaHistory/>}
                     callback={checkServerHealth}
                     label={"Retry"}
                 />                
