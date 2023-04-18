@@ -4,7 +4,8 @@ const useInfiniteScroller = (loadItems) => {
   const [fetching, setFetching] = useState(false);
 
   const handleScroll = () => {
-    if (window.innerHeight + Math.floor(document.documentElement.scrollTop) === document.documentElement.offsetHeight)
+    console.log(window.innerHeight, Math.floor(document.documentElement.scrollTop), document.documentElement.offsetHeight);
+    if (window.innerHeight + Math.floor(document.documentElement.scrollTop) === document.documentElement.offsetHeight - 1)
     {
       setFetching(true);
     }
@@ -18,6 +19,7 @@ const useInfiniteScroller = (loadItems) => {
 
   useEffect(() => {
     if (!fetching) return;
+    console.log("YOOO");
     loadItems();
 
   }, [fetching]);

@@ -1,15 +1,9 @@
-import React, { useState, useContext } from 'react';
-import agent from "../../app/api/agent/agent";
-import {ModalContext} from "../../app/store/ModalStore";
-import VotingPoll from './VotingPoll';
+import React, { useContext } from 'react';
+import {ModalContext} from "../../app/stores/ModalStore";
+import VotingPoll from '../../app/common/VotingPoll';
 import Loader from '../../app/layout/Loader';
-import { useNavigate } from 'react-router-dom';
 
-const QuestionDetails = ({ question }) => {
-  const {navigate} = useNavigate()
-  const [selectedChoice, setChoice] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [message, setMessasge] = useState(''); 
+const QuestionDetails = ({ question, handleChoiceChange, selectedChoice, submitting, onVoteSubmit, message }) => { 
   const [state, setState] = useContext(ModalContext);
 
   if(!question) return null;
@@ -18,30 +12,7 @@ const QuestionDetails = ({ question }) => {
     setState({isOpen: true, contentUrl: contentUrl});
   }
 
-  const onVoteSubmit = () => {
-    setLoading(true);
-    let updatedQuestion = question;
-    updatedQuestion.choices.forEach(choice => {
-      if(choice.choice === selectedChoice) {
-        choice.votes++;
-      }
-    });
-
-    agent.Questions.update(question.id, updatedQuestion).then(res => {
-      setLoading(false);
-      setMessasge('Vote submitted successfully');
-    })
-    .catch(error => {
-      setLoading(false);
-      setMessasge('An error ha ocurred, vote submition failed');
-    })
-  }
-
-  const handleChoiceChange = (choice) => {
-    setChoice(choice);
-  };
-
-  const date = question.published_at ? new Date(question.published_at)?.toString() : '';
+  const date = question.published_at ? new Date(question.published_at)?.toString().split('+')[0] : 'N/A';
   const contentUrl = window.location.href;
 
   return (
@@ -51,7 +22,7 @@ const QuestionDetails = ({ question }) => {
       </div>
       <div className="details-panel-body">
         <h2>{question.question}</h2>
-        {loading ? <div className='loader-container-xs'><Loader/></div> :
+        {submitting ? <div className='loader-container-xs'><Loader/></div> :
           <>
             <VotingPoll
               choices={question.choices}
@@ -65,7 +36,7 @@ const QuestionDetails = ({ question }) => {
         }
       </div>
       <div className="details-panel-footer">
-          <div className="list-item-date">Published at: {date ? date.split('+')[0] : 'N/A'}</div>
+          <div className="list-item-date">Published at: {date}</div>
       </div>
     </div>
   );

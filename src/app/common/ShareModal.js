@@ -1,6 +1,6 @@
 import agent from "../api/agent/agent";
 import React, {useState, useContext} from "react";
-import { ModalContext } from "../store/ModalStore";
+import { ModalContext } from "../stores/ModalStore";
 import Loader from "../layout/Loader";
 
 const ShareModal = (contentUrl) => {

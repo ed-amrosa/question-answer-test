@@ -1,52 +1,47 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import agent from "../api/agent/agent";
 import Loader from "../layout/Loader";
 import QuestionListItem from "../../features/question/QuestionListItem";
 import useInfiniteScroller from "../hooks/useInfiniteScroller";
 import ScrollTopButton from "../common/ScrollTopButton";
+import { useStore } from "../stores/store";
 
-function QuestionListPage() {
-    const navigate = useNavigate();
-    const [questionList, setQuestionList] = useState([]);
+export default observer(function QuestionListPage() {
+    const {questionStore} = useStore();
+    const {filter, loadingList, questionList, resetQuestionList, setFilter, loadQuestionList, addQuestionList} = questionStore;
     const [searchParams, setSearchParams] = useSearchParams();
-    const [filter, setFilter] = useState();
-    const [loading, setLoading] = useState(false);
-    const [fetching, setFetching] = useInfiniteScroller(loadMoreData);
-    const [offset, setOffset] = useState(1);
-
+    const [fetching, setFetching] = useInfiniteScroller(loadMoreQuestions);
+    const [offset, setOffset]= useState(0);
+    
     const onFilterChange = (e) => {
-        setQuestionList([]);
+        resetQuestionList();
         setSearchParams({filter: e.target.value});
         setFilter(e.target.value);
     }
 
+    //extracted to be easily used with the Infinite Scroller Hook
+    function loadMoreQuestions() {
+        setFetching(true);
+        agent.Questions.list({limit: 10, offset: offset, filter: filter}).then(res => {
+            addQuestionList(res);
+            setFetching(false);
+        }). catch(error => setFetching(false));
+        setOffset(prevState => prevState + 1);
+    }
+
+    //clears filter and filter search parameter
     const clearSearch = () => {
+        resetQuestionList();
         setSearchParams({});
         setFilter('');
     }
 
-    const loadData = () => {
-        setLoading(true);
-        agent.Questions.list({params: {limit: 5, offset: offset,filter: searchParams.get('filter')}}).then(res => {
-            setQuestionList(res);
-            setLoading(false);
-        });
-    }
-
-    function loadMoreData() {
-        setFetching(true);
-        agent.Questions.list({params: {limit: 5, offset: offset, filter:  searchParams.get('filter')}}).then(res => {
-            setQuestionList(prevItems => [...prevItems, ...res]);
-            setTimeout(() => {setFetching(false)}, 1000);
-        });
-        setOffset(prevOffset => prevOffset + 1);
-    };
-
     useEffect(()=>{
         setFilter(searchParams.get('filter'));
-        loadData();
-    }, [searchParams])
+        loadQuestionList();
+    }, [filter])
 
     return (<>
         <ScrollTopButton />
@@ -56,7 +51,7 @@ function QuestionListPage() {
                     <div className="filter-label">Filter</div> 
                     <input 
                         onChange={onFilterChange}
-                        value={filter} 
+                        value={filter ? filter : ''} 
                         className="textbox" 
                         type="text" 
                         style={{width: "50%"}}
@@ -78,10 +73,8 @@ function QuestionListPage() {
                         </>
                     )
                 }
-                {(loading || fetching) && <div className="loader-container-xs"><Loader/></div>}
+                {(loadingList || fetching) && <div className="loader-container-xs"><Loader/></div>}
             </div>
         </div>
     </>);
-}
-
-export default QuestionListPage;
+});
