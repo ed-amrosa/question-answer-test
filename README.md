@@ -1,5 +1,15 @@
 # question-answer-test
 
-instructions:
+#instructions:
 
-Go to projects folder and run:npm install
+##installation
+```
+npm install
+```
+
+##Run
+```
+npm run start
+```
+
+##Running with another API besides the mock API provided
