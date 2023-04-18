@@ -1,15 +1,16 @@
 # question-answer-test
 ---
-#instructions:
----
-##installation
+# Instructions:
+## Installation:
 ```
 npm install
 ```
 ---
-##Run
+##Running project:
 ```
 npm run start
 ```
 ---
+---
 ##Running with another API besides the mock API provided
+---
