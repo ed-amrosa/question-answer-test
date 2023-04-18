@@ -1,6 +1,6 @@
 import agent from "../api/agent/agent";
 import React, {useState, useContext} from "react";
-import { ModalContext } from "../stores/ModalStore";
+import { ModalContext } from "../../features/stores/ModalStore";
 import Loader from "../layout/Loader";
 
 const ShareModal = (contentUrl) => {
@@ -11,7 +11,7 @@ const ShareModal = (contentUrl) => {
     const [message, setMessage] = useState(null);
  
     const validateEmail = () => {
-        return /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/.test(email)
+        return !/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/.test(email)
     }
     const handleClose = () => {
       setState({isOpen: false});

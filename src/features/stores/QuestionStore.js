@@ -1,9 +1,13 @@
-import { makeAutoObservable, runInAction, configure, reaction } from "mobx";
-import agent from "../api/agent/agent";
+import { makeAutoObservable, runInAction, configure } from "mobx";
+import agent from "../../app/api/agent/agent";
 
 configure({
     useProxies: "never"
 });
+
+//Used MOBX to control question store state, as it is a simple and horizontally scalable tool suitable for this problem
+//I'm mostly confortable with redux, but would be a bad decision to use it in this case, larger code necessity / overhead
+//Redux scales better vertically, mainly for bulkier applications with larger data structures
 
 class QuestionStore {
     questionList = [];
@@ -12,9 +16,8 @@ class QuestionStore {
     fetchingMore = false;
     editMode=false;
     loadingList = false;
-    loadingDetails = false;
     submitting=false;
-    filter = undefined;
+    filter = '';
 
     constructor() {
         makeAutoObservable(this);
@@ -33,7 +36,6 @@ class QuestionStore {
     }
 
     loadQuestionList = () => {
-        console.log("yoo")
         this.loadingList = true;
         agent.Questions.list({limit: 10, offset: 0, filter: ''}).then(res => {
             runInAction(() =>  {
@@ -69,7 +71,7 @@ class QuestionStore {
     createQuestion = (question) => {
         agent.Questions.create(question).then(res => {
             this.questionList.replace(this.questionList.push(question));
-        }).catch(error => console.log("Rrror creating question"));  
+        }).catch(error => console.log("Error creating question"));  
     }
 
     editQuestion = (id, updatedQuestion) => {
@@ -83,7 +85,7 @@ class QuestionStore {
         }).catch(error => {
             this.message = "Error submitting vode";
             this.submitting = false;
-            console.log("Error submitting questio")
+            console.log("Error submitting question")
         })
     }
 }

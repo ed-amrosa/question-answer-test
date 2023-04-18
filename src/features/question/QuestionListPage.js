@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import { useSearchParams} from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import agent from "../api/agent/agent";
-import Loader from "../layout/Loader";
-import QuestionListItem from "../../features/question/QuestionListItem";
-import useInfiniteScroller from "../hooks/useInfiniteScroller";
-import ScrollTopButton from "../common/ScrollTopButton";
+import agent from "../../app/api/agent/agent";
+import Loader from "../../app/layout/Loader";
+import QuestionListItem from "./QuestionListItem";
+import useInfiniteScroller from "../../app/hooks/useInfiniteScroller";
+import ScrollTopButton from "../../app/common/ScrollTopButton";
 import { useStore } from "../stores/store";
 
 export default observer(function QuestionListPage() {
+    //Using MOBX question store to remove alot of the logic from the components
     const {questionStore} = useStore();
     const {filter, loadingList, questionList, resetQuestionList, setFilter, loadQuestionList, addQuestionList} = questionStore;
     const [searchParams, setSearchParams] = useSearchParams();
@@ -63,14 +64,14 @@ export default observer(function QuestionListPage() {
             <div className="divider"/>
             <div style={{background: "white", borderRadius: "4px"}}>
                 {  
-                    questionList.map(question =>
-                        <>        
+                    questionList.map((question, index) =>
+                        <div key={`q-${index}`} >        
                             <QuestionListItem 
-                                key={"question-" + question.id}
+                                key={`question-${index}`}
                                 question={question} 
                             />   
-                            <div className="divider-xs"/>     
-                        </>
+                            <div key={`question-divider-${index}`} className="divider-xs"/>     
+                        </div>
                     )
                 }
                 {(loadingList || fetching) && <div className="loader-container-xs"><Loader/></div>}
