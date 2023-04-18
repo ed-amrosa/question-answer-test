@@ -3,9 +3,9 @@
     width: 100%;
     justify-content: center;
     display: flex !important;
-  }
+}
   
-  .filter-input button {
+.filter-input button {
     position:relative;
     float: right;
     color: white;
@@ -13,11 +13,11 @@
     border: 1px solid #2c6baa;
     border-radius: 4px;
     margin: 0 4px;  
-  }
+}
   
-  .filter-label {
+.filter-label {
     font-size: 24px;
     font-weight: 600;
     margin-right: 12px;
     padding: 4px;
-  }
+}

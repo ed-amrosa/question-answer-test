@@ -14,12 +14,17 @@ function VotingPoll({ choices, selectedChoice, handleChoiceChange }) {
     return (<div className="details-panel-poll">
     {
         choices.map((ch, index) => {
-            return <div className='voting-poll-item-container ' style={{backgroundColor: selectedChoice === ch.choice ? '#18bb4c' : '#d0e1f2'}} onClick={() => handleChoiceChange(ch.choice)}>
+            return <div 
+                key={"choice-index"} 
+                className='voting-poll-item-container ' 
+                style={{backgroundColor: selectedChoice === ch.choice ? '#18bb4c' : '#d0e1f2'}} 
+                onClick={() => handleChoiceChange(ch.choice)}
+            >  
                 <div className="voting-poll-item">
-                <label key={ch.choice}>{ch.choice} ({ch.votes}) votes </label>
+                    <label key={ch.choice}>{ch.choice} ({ch.votes}) votes </label>
                 </div>
                 <div className="result-bar" style={{ width: `${percentageVotes[index]}%` }}>
-                {percentageVotes[index].toFixed(1)}%
+                    {percentageVotes[index].toFixed(1)}%
                 </div>
             </div> 
         })

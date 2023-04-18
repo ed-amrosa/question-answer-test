@@ -65,13 +65,13 @@ export default observer(function QuestionListPage() {
             <div style={{background: "white", borderRadius: "4px"}}>
                 {  
                     questionList.map((question, index) =>
-                        <>        
+                        <div key={`q-${index}`} >        
                             <QuestionListItem 
                                 key={`question-${index}`}
                                 question={question} 
                             />   
-                            <div className="divider-xs"/>     
-                        </>
+                            <div key={`question-divider-${index}`} className="divider-xs"/>     
+                        </div>
                     )
                 }
                 {(loadingList || fetching) && <div className="loader-container-xs"><Loader/></div>}

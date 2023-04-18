@@ -11,7 +11,7 @@
     align-items: center;
   }
   
-  .modal {
+.modal {
     background-color: white;
     border-radius: 5px;
     padding: 20px;
@@ -21,38 +21,38 @@
     max-width: 90%;
     max-height: 90%;
     overflow: auto;
-  }
+}
   
-  .modal-header {
+.modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
   
-  .modal-body {
+.modal-body {
     margin-bottom: 20px;
-  }
+}
   
-  label {
+label {
     display: block;
     margin-bottom: 10px;
-  }
+}
   
-  input {
+input {
     display: block;
     width: 80%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-  }
+}
   
-  .modal-footer {
+.modal-footer {
     display: flex;
     justify-content: flex-end;
-  }
+}
   
-  .cancel-button {
+.cancel-button {
     background-color: #adb0b8;
     color: rgb(0, 0, 0);
     border: none;
@@ -60,9 +60,9 @@
     border-radius: 4px;
     cursor: pointer;
     margin: 0px 5px;
-  }
+}
   
-  .submit-button {
+.submit-button {
     background-color: rgb(64, 64, 201);
     color: white;
     border: none;
@@ -70,20 +70,20 @@
     border-radius: 4px;
     cursor: pointer;
     margin: 0px 5px;
-  }
+}
   
-  .red {
+.red {
     background-color: red !important
-  }
+}
   
-  .green {
+.green {
     background-color: rgb(102, 189, 102) !important
-  }
+}
   
-  .blue {
+.blue {
     color: rgb(45, 45, 254) !important
-  }
+}
   
-  button {
+button {
     border-radius: 4px;
-  }
+}

@@ -15,7 +15,7 @@ function QuestionListItem({question, index}) {
     const contentUrl = window.location.href + '/' + question.id.toString();
 
     return (
-        <Panel key={"question-" + index} className="m-8">
+        <Panel className="m-8">
             <div className="list-item">
                 <img className="list-item-thumb" src={question.thumb_url}/>
                 <div className="list-item-content">

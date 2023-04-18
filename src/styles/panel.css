@@ -64,51 +64,51 @@
     margin: 0 4px;  
 }
   
-  .details-panel-body h2 {
+.details-panel-body h2 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 24px;
-  }
+}
   
-  .details-panel-body p {
+.details-panel-body p {
     margin: 0;
     font-size: 18px;
     line-height: 1.5;
-  }
+}
   
-  .details-panel-poll {
+.details-panel-poll {
     margin-top: 20px;
-  }
+}
   
-  .details-panel-poll h3 {
+.details-panel-poll h3 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
-  }
+}
   
-  .details-panel-poll form label {
+.details-panel-poll form label {
     display: block;
     margin-bottom: 10px;
-  }
+}
   
-  .details-panel-footer {
+.details-panel-footer {
     margin-top: 20px;
-  }
+}
   
-  .textbox {
+.textbox {
     background: #e5edf7
-  }
+}
 
-  .fixed-button {
+.fixed-button {
     position: fixed;
     top: 25px;
     left: 25px;
     color: #2c6baa;
-  }
+}
   
-  .hide {
+.hide {
     display: none;
-  }
+}
   
   
   

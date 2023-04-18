@@ -3,34 +3,34 @@
     table-layout: fixed;
     padding: 0.21428571em 0;
     line-height: 1.14285714em;
-  }
+}
   
-  .list-item button {
+.list-item button {
     float: right;
     color: white;
     background-color: #2c6baa;
     border: 1px solid #2c6baa;
     border-radius: 4px;
-  }
+}
   
-  .list-item-thumb {
+.list-item-thumb {
     display: inline-block;
     background-color: transparent;
     vertical-align: top;
     width: 5rem;
     height: 5rem;
     border-radius: 500rem;
-  }
+}
 
-  .list-item-content {
+.list-item-content {
     display: inline-block;
     width: auto;
     padding: 10px 0 0 0.75rem;
     vertical-align: top;
     line-height: 1.14285714em;
-  }
+}
   
-  .list-item-header {
+.list-item-header {
     cursor: pointer;
     color: #2c6baa!important;
     display: block;
@@ -38,26 +38,26 @@
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     font-weight: 700;
     color: rgba(0,0,0,.87);
-  }
+}
   
-  .list-item-date {
+.list-item-date {
     display: block;
     color: rgba(0,0,0,.7);
     line-height: 1.14285714em;
     font-size: 10px;
-  }
+}
 
-  .divider-xs {
+.divider-xs {
     height: 1px;
     background-color: #acd2f7;
     margin: 0 4%;
-  }
+}
   
-  .divider {
+.divider {
     height: 1px;
     background-color: #2c6baa;
     margin: 8px 0;
-  }
+}
 
 
   

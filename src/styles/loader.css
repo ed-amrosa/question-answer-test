@@ -10,9 +10,9 @@
     background: #c9c5e2;
     z-index: 1;
     opacity: 0.8;
-  }
+}
   
-  .loader {
+.loader {
     width: 82px;
     height: 82px;
     border: 10px solid #FFF;
@@ -35,4 +35,11 @@
       border-bottom-color: #e2230e;
       transform: rotate(360deg);
     }
-  } 
+} 
+.loader-container-xs {
+    display: flex;
+    justify-content: center;
+    background-color: inherit;
+    margin: 8px;
+    padding: 8px;
+}
