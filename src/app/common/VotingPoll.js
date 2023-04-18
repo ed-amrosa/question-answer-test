@@ -15,7 +15,7 @@ function VotingPoll({ choices, selectedChoice, handleChoiceChange }) {
     {
         choices.map((ch, index) => {
             return <div 
-                key={"choice-index"} 
+                key={`choice-${index}`} 
                 className='voting-poll-item-container ' 
                 style={{backgroundColor: selectedChoice === ch.choice ? '#18bb4c' : '#d0e1f2'}} 
                 onClick={() => handleChoiceChange(ch.choice)}
